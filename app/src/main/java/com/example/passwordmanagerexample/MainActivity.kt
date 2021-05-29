@@ -7,16 +7,19 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Color.Companion.Gray
 import androidx.compose.ui.graphics.Color.Companion.Transparent
 import androidx.compose.ui.layout.layout
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.passwordmanagerexample.ui.theme.PasswordManagerExampleTheme
 
 class MainActivity : ComponentActivity() {
@@ -52,10 +55,12 @@ fun topBar() {
 
 @Composable
 fun MyFloatingActionButton() {
-    ExtendedFloatingActionButton(icon= {Icon(Icons.Filled.Favorite,"") },
-    text = {},
-    onClick = {},
-    )
+    FloatingActionButton(onClick = {}) {
+        Icon(Icons.Filled.Add,
+            null,
+            // If tint color is provided, it will override contentColor below
+            tint = Color.White)
+    }
 }
 
 @Composable
