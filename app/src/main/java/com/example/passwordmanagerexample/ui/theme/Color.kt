@@ -19,5 +19,6 @@ val newWhiteBackground=Color(0xFF053742)
 //new Colours
 val LightPink = Color(0xFFFFF5FD)
 val Pink = Color(0xFFFF96AD)
+val DarkPink = Color(0xFFe3718a)
 val LightBlue = Color(0xFF005A8D)
 val Blue = Color(0xFF022E57)
