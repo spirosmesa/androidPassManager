@@ -1,25 +1,21 @@
 package com.example.passwordmanagerexample.UIComponents
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.ParagraphStyle
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
-import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import com.example.passwordmanagerexample.Greeting
+import com.example.passwordmanagerexample.UIComponents.PasswForms.PasswFormViewModel
 import com.example.passwordmanagerexample.ui.theme.*
 import com.example.passwordmanagerexample.ui.theme.LightPink
 import com.example.passwordmanagerexample.ui.theme.Pink
@@ -35,11 +31,11 @@ fun DefaultPreview() {
 }
 
 @Composable
-fun composeFields(label: String) {
-    var textFieldState = remember { mutableStateOf(TextFieldValue()) }
+fun composeFields(label: String, fieldState: MutableState<String>) {
+    //var textFieldState = remember { mutableStateOf(TextFieldValue()) }
     TextField(
-        value = textFieldState.value,
-        onValueChange = { value -> textFieldState.value = value },
+        value = fieldState.value,
+        onValueChange = { value -> fieldState.value = value },
         label = { Text(label) },
         colors = TextFieldDefaults.textFieldColors(
             backgroundColor = WhiteBackground,
@@ -59,9 +55,7 @@ fun composeFields(label: String) {
  * Notes
  */
 @Composable
-fun FullScreenDialog(showDialog: Boolean, onClose: () -> Unit) {
-
-    if (showDialog) {
+fun FullScreenDialog(showDialog: MutableState<Boolean>, onClose: () -> Unit) {
         Dialog(onDismissRequest = onClose) {
             Surface(
                 color = LightPink,
@@ -86,11 +80,11 @@ fun FullScreenDialog(showDialog: Boolean, onClose: () -> Unit) {
                             modifier = Modifier.padding(bottom = 10.dp)
                         )
 
-                        composeFields("Username")
-                        composeFields("Password")
-                        composeFields("URL")
-                        composeFields("Site Name")
-                        composeFields("Notes")
+                        composeFields("Username", PasswFormViewModel.userState)
+                        composeFields("Password", PasswFormViewModel.passwordState)
+                        composeFields("URL", PasswFormViewModel.urlState)
+                        composeFields("Site Name", PasswFormViewModel.siteNameState)
+                        composeFields("Notes", PasswFormViewModel.notesState)
 
 
                         //Submit
@@ -103,7 +97,7 @@ fun FullScreenDialog(showDialog: Boolean, onClose: () -> Unit) {
 
                         ) {
                             Button(
-                                onClick = { /* Do something! */ },
+                                onClick = { PasswFormViewModel.onSubmitButtonClick(showDialog) },
                                 colors = ButtonDefaults.textButtonColors(
                                     backgroundColor = Pink
                                 )
@@ -112,7 +106,7 @@ fun FullScreenDialog(showDialog: Boolean, onClose: () -> Unit) {
                             }
                             Spacer(Modifier.weight(1f))
                             Button(
-                                onClick = { /* Do something! */ },
+                                onClick = { PasswFormViewModel.onCancelButtonClick(showDialog)},
                                 colors = ButtonDefaults.textButtonColors(
                                     backgroundColor = Blue
                                 )
@@ -126,5 +120,4 @@ fun FullScreenDialog(showDialog: Boolean, onClose: () -> Unit) {
 
             }
         }
-    }
 }
