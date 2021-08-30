@@ -14,21 +14,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
-import com.example.passwordmanagerexample.Greeting
 import com.example.passwordmanagerexample.UIComponents.PasswForms.PasswFormViewModel
 import com.example.passwordmanagerexample.ui.theme.*
 import com.example.passwordmanagerexample.ui.theme.LightPink
 import com.example.passwordmanagerexample.ui.theme.Pink
-
-//var text =  mutableStateOf("passNaam")
-
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    PasswordManagerExampleTheme {
-        Greeting("Android")
-    }
-}
 
 @Composable
 fun composeFields(label: String, fieldState: MutableState<String>) {
@@ -85,7 +74,6 @@ fun FullScreenDialog(showDialog: MutableState<Boolean>, onClose: () -> Unit) {
                         composeFields("URL", PasswFormViewModel.urlState)
                         composeFields("Site Name", PasswFormViewModel.siteNameState)
                         composeFields("Notes", PasswFormViewModel.notesState)
-
 
                         //Submit
                         //Cancel
