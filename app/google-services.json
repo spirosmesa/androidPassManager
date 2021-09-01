@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "676070203127",
+    "project_id": "passwexample",
+    "storage_bucket": "passwexample.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:676070203127:android:b171c84b00654b738f3df2",
+        "android_client_info": {
+          "package_name": "com.example.passwordmanagerexample"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "676070203127-7lrce4itbmfcpn3o8bv4mke4jdh11136.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDGYWuOonrJ_XcsZe8aJLNUVegnSfVYGts"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "676070203127-7lrce4itbmfcpn3o8bv4mke4jdh11136.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
