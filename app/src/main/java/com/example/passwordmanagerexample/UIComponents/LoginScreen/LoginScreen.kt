@@ -2,14 +2,14 @@ package com.example.passwordmanagerexample.UIComponents.LoginScreen
 
 import android.widget.Toast
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.Button
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
-import androidx.compose.material.TextField
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
@@ -21,8 +21,10 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.passwordmanagerexample.R
+import com.example.passwordmanagerexample.ViewModels.LoginScreenViewModel
 
 @Composable
 fun LoginScreen(
@@ -34,6 +36,7 @@ fun LoginScreen(
     Box(
         modifier = Modifier
             .fillMaxSize()
+            .background(MaterialTheme.colors.primary)
     ) {
         Column(
             verticalArrangement = Arrangement.Center,
@@ -41,7 +44,7 @@ fun LoginScreen(
         ) {
             val emailState = viewModel.emailState.value
             val password = viewModel.passwordState.value
-            Image(painter = painterResource(id = R.mipmap.ic_pass), contentDescription = null)
+            Image(painter = painterResource(id = R.drawable.ic_pass_foreground), contentDescription = null)
             TextField(
                 value = emailState,
                 onValueChange = { viewModel.onEmailFieldChanged(it) },
@@ -59,9 +62,12 @@ fun LoginScreen(
             Button(
                 onClick = {
                     viewModel.onSubmitBtnPressed(emailState, password, navController = navController)
-                }
+                },
+                colors = ButtonDefaults.buttonColors(
+                    backgroundColor = MaterialTheme.colors.onPrimary),
+                shape = RoundedCornerShape(15)
             ) {
-                Text(text = loginState.value.btnText)
+                Text(text = loginState.value.btnText, color = MaterialTheme.colors.primary)
             }
             Spacer(modifier = Modifier.padding(vertical = 3.dp))
             Text(

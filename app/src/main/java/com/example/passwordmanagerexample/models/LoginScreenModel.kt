@@ -1,4 +1,4 @@
-package com.example.passwordmanagerexample.ViewModels
+package com.example.passwordmanagerexample.models
 
 import androidx.compose.runtime.Immutable
 

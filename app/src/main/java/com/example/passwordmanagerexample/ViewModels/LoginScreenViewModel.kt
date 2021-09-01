@@ -6,6 +6,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavController
+import com.example.passwordmanagerexample.FirebaseRepository.FirebaseAPI
+import com.example.passwordmanagerexample.models.LoginScreenModel
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -64,14 +66,14 @@ class LoginScreenViewModel : ViewModel() {
 //            Log.i("REPSONE REGISTER", errorMessage.value)
             viewModelScope.launch {
                 authenticateUser(
-                    FirebaseAPI.registerUser(email, password),
+                    FirebaseAPI.auth.registerUser(email, password),
                     navController = navController
                 )
             }
         } else {
             viewModelScope.launch {
                 authenticateUser(
-                    FirebaseAPI.loginUserCoroutine(email, password),
+                    FirebaseAPI.auth.loginUserCoroutine(email, password),
                     navController = navController
                 )
             }
